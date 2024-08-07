@@ -1,11 +1,29 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+// Theme
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from "@react-navigation/native";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+// Styling
+import { useFonts } from "expo-font";
+import { useColorScheme } from "@/hooks/useColorScheme";
+
+// Router
+import { Stack } from "expo-router";
+
+// Splash
+import * as SplashScreen from "expo-splash-screen";
+
+// React / React Native
+import { useEffect } from "react";
+
+// Animations
+import "react-native-reanimated";
+
+// utils
+import { pageOptions } from "@/utils";
+import Header from "@/components/header";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -13,7 +31,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
   useEffect(() => {
@@ -27,9 +45,12 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={pageOptions.home} />
+        <Stack.Screen name="(game)/join" options={pageOptions.join} />
+        <Stack.Screen name="(lobby)/index" options={pageOptions.lobby} />
+        <Stack.Screen name="(shop)/index" options={pageOptions.shop} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>

@@ -18,4 +18,8 @@ export const pageOptions = {
     headerTitle: () => <Header title="Shop" />,
     headerBackTitleVisible: false,
   },
+  channel: {
+    headerTitle: () => <Header title="Channel" />,
+    headerBackTitleVisible: false,
+  },
 };

@@ -23,7 +23,6 @@ import "react-native-reanimated";
 
 // utils
 import { pageOptions } from "@/utils";
-import Header from "@/components/header";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -51,6 +50,7 @@ export default function RootLayout() {
         <Stack.Screen name="(game)/join" options={pageOptions.join} />
         <Stack.Screen name="(lobby)/index" options={pageOptions.lobby} />
         <Stack.Screen name="(shop)/index" options={pageOptions.shop} />
+        <Stack.Screen name="channel/[channel]" options={pageOptions.channel} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>
